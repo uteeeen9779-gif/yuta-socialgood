@@ -2,18 +2,21 @@
 const beliefs = [
   {
     num: '01',
-    title: '手段より目的',
-    body: 'WEBもECも、あくまで売上をつくるための手段。「サイトを作ること」ではなく「事業が動くこと」にコミットします。デジタルはゴールではなく、事業成長のための最適な道具です。',
+    img: '/philosophy01.jpg',
+    title: '地域の事業者さまと都市部の専門人材で、新たな価値を共創する',
+    body: '地域には本物の商材・文化・物語があります。しかし、デジタルや戦略の専門知識と都市部とのネットワークが不足していることが多い。都市部の専門人材は高い技術と知見を持ちながらも、地域とつながる機会が限られています。この二つの力が交わるところに、新しい価値が生まれます。私はその橋渡し役として、地域の本物の魅力を全国・世界へ届ける土台をつくっていきます。',
   },
   {
     num: '02',
-    title: '両輪で地域を動かす',
-    body: '個人の支援だけでは、どうしても部分最適に終わる。地域が本当に強くなるには、大企業・自治体を動かす組織の力と、個別の事業者に寄り添う個人の現場力——この両輪が必要です。だから複業という形を選んでいます。',
+    img: '/philosophy02.jpg',
+    title: '部分最適ではなく全体最適にこだわる',
+    body: 'WEBもECも、売上をつくるためのコミュニケーションツールです。「サイトを作ること」がゴールではなく、「その後にどう売上へ繋げるか」が本質です。売上拡大・販路拡大という経営課題に対して、WEB/ECの構築にとどまらず、現場オペレーションの効率化、DX・AI活用、マーケティング戦略の立案・実行・分析まで——事業全体をグロースハックしていきます。',
   },
   {
     num: '03',
-    title: '100年後に残す',
-    body: '地域の文化と魅力は、正しく発信されなければ消えていく。小さくても、地方にあっても、本物の魅力を持つ事業者が全国・世界に届く土台をつくること。それが、私がこの仕事を続ける理由です。',
+    img: '/philosophy03.jpg',
+    title: '100年後も魅力ある地域を、魅力ある日本を。',
+    body: '地域の文化と魅力は、正しく発信されなければ消えていきます。素晴らしい商材も、伝わらなければ存在しないのと同じ。小さくても、地方にあっても、本物の価値を持つ事業者が全国・世界に届く土台をつくること。その積み重ねが、100年後も魅力ある地域を、魅力ある日本をつくると信じています。その未来のために、私はデジタルを使い続けます。',
   },
 ];
 ---
@@ -29,17 +32,17 @@ const beliefs = [
       </p>
     </div>
 
-    <div class="beliefs">
-      {beliefs.map((b, i) => (
-        <div class="belief-row">
-          <div class="belief-num-col">
-            <span class="belief-num">{b.num}</span>
+    <div class="beliefs-grid">
+      {beliefs.map((b) => (
+        <div class="belief-card">
+          <div class="belief-img-wrap">
+            <img src={b.img} alt={b.title} loading="lazy" class="belief-img" />
+            <span class="belief-num-badge">{b.num}</span>
           </div>
-          <div class="belief-body-col">
+          <div class="belief-body">
             <h3 class="belief-title">{b.title}</h3>
             <p class="belief-text">{b.body}</p>
           </div>
-          {i < beliefs.length - 1 && <div class="belief-rule" />}
         </div>
       ))}
     </div>
@@ -56,69 +59,92 @@ const beliefs = [
 
 .phil-header {
   max-width: 600px;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 
-.beliefs {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+/* ── Grid ── */
+.beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.belief-card {
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background: var(--bg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
 }
 
-.belief-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 40px;
-  padding: 48px;
-  border-bottom: 1px solid var(--border);
-  transition: background var(--transition);
+.belief-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
 }
 
-.belief-row:last-child {
-  border-bottom: none;
+/* ── Image ── */
+.belief-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.belief-row:hover {
-  background: var(--bg-soft);
+.belief-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.belief-num-col {
-  padding-top: 4px;
+.belief-card:hover .belief-img {
+  transform: scale(1.04);
 }
 
-.belief-num {
+.belief-num-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.1em;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  background: var(--accent);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* ── Content ── */
+.belief-body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
 }
 
 .belief-title {
   font-family: var(--font-serif);
-  font-size: 1.375rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 14px;
+  line-height: 1.5;
 }
 
 .belief-text {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
   line-height: 1.95;
-  max-width: 640px;
 }
 
-@media (max-width: 768px) {
-  .belief-row {
+@media (max-width: 1024px) {
+  .beliefs-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 32px 24px;
+    max-width: 560px;
   }
 }
 </style>
