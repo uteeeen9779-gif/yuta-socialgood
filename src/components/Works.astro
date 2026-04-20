@@ -5,42 +5,42 @@ const works = [
     region: '中国地方',
     desc: 'WEBサイト・EC運用、マーケティング支援',
     tags: ['WEB運用', 'EC', 'マーケティング'],
-    gradient: 'linear-gradient(135deg, #E8D5B0 0%, #C4956A 100%)',
+    img: '/work-food.jpg',
   },
   {
     category: '一棟貸し古民家',
     region: '中国地方',
     desc: 'WEBサイト構築、予約システム、多言語対応',
     tags: ['WEB構築', '予約システム', '多言語'],
-    gradient: 'linear-gradient(135deg, #B8D4C8 0%, #5A8A78 100%)',
+    img: '/work-kominka1.jpg',
   },
   {
     category: '建築家',
     region: '千葉',
     desc: '多言語WEBサイト構築、海外向け集客支援',
     tags: ['多言語', '海外集客', 'WEB構築'],
-    gradient: 'linear-gradient(135deg, #C8CDD8 0%, #6B7592 100%)',
+    img: '/work-architect.jpg',
   },
   {
     category: '古民家',
     region: '千葉',
     desc: 'WEBサイト構築',
     tags: ['WEB構築'],
-    gradient: 'linear-gradient(135deg, #D4C4A8 0%, #8B6E4A 100%)',
+    img: '/work-kominka2.jpg',
   },
   {
     category: 'クラフトビール醸造所',
     region: '千葉',
     desc: 'WEBサイト構築・運用、クリエイティブ制作、マーケティング支援',
     tags: ['WEB', 'クリエイティブ', 'マーケティング'],
-    gradient: 'linear-gradient(135deg, #D4B8A0 0%, #8B5A3A 100%)',
+    img: '/work-beer.jpg',
   },
   {
     category: '日本工芸画廊',
     region: '東京',
     desc: 'WEB／EC一体型サイト構築・運用、マーケティング支援',
     tags: ['WEB/EC統合', 'EC', 'マーケティング'],
-    gradient: 'linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%)',
+    img: '/work-gallery.jpg',
   },
 ];
 ---
@@ -58,7 +58,8 @@ const works = [
     <div class="works-grid">
       {works.map((w) => (
         <div class="work-card">
-          <div class="work-img" style={`background: ${w.gradient}`}>
+          <div class="work-img">
+            <img src={w.img} alt={w.category} loading="lazy" />
             <span class="work-region-badge">{w.region}</span>
           </div>
           <div class="work-body">
