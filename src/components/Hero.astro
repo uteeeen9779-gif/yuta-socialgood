@@ -2,35 +2,55 @@
 ---
 <section class="hero" id="home">
   <div class="container">
-    <div class="hero-content">
-      <p class="hero-label">WEB DIRECTOR</p>
-      <h1 class="hero-title">
-        地域とつなぐ、<br />世界とつなぐ。
-      </h1>
-      <p class="hero-sub">売上にコミットするWEBディレクター</p>
-      <p class="hero-desc">
-        上場企業の現役社員として国際的なM&amp;A案件に携わりながら、<br class="pc-br" />
-        地域の中小企業のデジタル支援を複業で行っています。
-      </p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn-primary">まずは相談する</a>
-        <a href="#works" class="btn-secondary">実績を見る</a>
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <p class="eyebrow">Web Director</p>
+        <h1 class="hero-title">
+          地域とつなぐ、<br />世界とつなぐ。
+        </h1>
+        <p class="hero-sub">売上にコミットするWEBディレクター</p>
+        <p class="hero-desc">
+          上場企業の現役社員として国際的なM&amp;A案件に携わりながら、
+          地域の中小企業のデジタル支援を複業で行っています。
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">まずは相談する →</a>
+          <a href="#works" class="btn-outline">実績を見る</a>
+        </div>
       </div>
+
+      <div class="hero-visual">
+        <div class="hero-photo-wrap">
+          <img src="/profile.jpg" alt="YU_TABI" class="hero-photo" />
+          <div class="hero-badge">
+            <span class="badge-num">6<span>+</span></span>
+            <span class="badge-label">支援実績</span>
+          </div>
+        </div>
+      </div>
+
     </div>
+
     <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">6<span class="stat-plus">+</span></span>
-        <span class="stat-label">支援実績</span>
+      <div class="stat-item">
+        <span class="stat-num">6<small>+</small></span>
+        <span class="stat-text">支援実績</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
+      <div class="stat-sep"></div>
+      <div class="stat-item">
         <span class="stat-num">3</span>
-        <span class="stat-label">コアサービス</span>
+        <span class="stat-text">コアサービス</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">10<span class="stat-plus">+</span></span>
-        <span class="stat-label">対応ツール</span>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num">10<small>+</small></span>
+        <span class="stat-text">対応ツール</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num">4<small>年</small></span>
+        <span class="stat-text">支援経験</span>
       </div>
     </div>
   </div>
@@ -41,158 +61,180 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 64px;
+  padding-top: 68px;
   background: var(--bg);
-  position: relative;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -15%;
-  right: -8%;
-  width: 560px;
-  height: 560px;
-  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-  pointer-events: none;
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+  padding: 80px 0 56px;
 }
 
-.hero-content {
-  max-width: 720px;
-  padding: 80px 0 40px;
-}
-
-.hero-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
+/* ── Text side ── */
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-size: clamp(3rem, 6.5vw, 5.25rem);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
   color: var(--text);
   margin-bottom: 20px;
 }
 
 .hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  font-weight: 500;
+  font-size: 1.0625rem;
+  font-weight: 600;
   color: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
 }
 
 .hero-desc {
   font-size: 0.9375rem;
   color: var(--text-muted);
-  line-height: 1.9;
+  line-height: 1.85;
   margin-bottom: 40px;
+  max-width: 480px;
 }
 
-.pc-br {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .pc-br {
-    display: block;
-  }
-}
-
-.hero-cta {
+.hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  background: var(--accent);
-  color: var(--white);
-  padding: 14px 32px;
-  border-radius: 32px;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  transition: var(--transition);
-  box-shadow: 0 4px 16px rgba(45, 106, 79, 0.3);
+/* ── Photo side ── */
+.hero-visual {
+  position: relative;
 }
 
-.btn-primary:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
+.hero-photo-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: var(--shadow-lg);
 }
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  background: transparent;
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.hero-photo-wrap:hover .hero-photo {
+  transform: scale(1.03);
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: var(--shadow);
+}
+
+.badge-num {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
   color: var(--text);
-  padding: 14px 32px;
-  border-radius: 32px;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  border: 1.5px solid var(--border);
-  transition: var(--transition);
 }
 
-.btn-secondary:hover {
-  border-color: var(--accent);
+.badge-num span {
+  font-size: 1.125rem;
   color: var(--accent);
 }
 
+.badge-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ── Stats bar ── */
 .hero-stats {
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 32px 0 56px;
+  gap: 0;
   border-top: 1px solid var(--border);
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-.stat {
+.stat-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  padding: 0 32px;
 }
+
+.stat-item:first-child { padding-left: 0; }
 
 .stat-num {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 600;
-  color: var(--text);
   line-height: 1;
+  color: var(--text);
 }
 
-.stat-plus {
-  font-size: 1.25rem;
+.stat-num small {
+  font-size: 1.1rem;
   color: var(--accent);
+  font-weight: 500;
 }
 
-.stat-label {
+.stat-text {
   font-size: 0.75rem;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
+  color: var(--text-light);
+  letter-spacing: 0.06em;
 }
 
-.stat-divider {
+.stat-sep {
   width: 1px;
   height: 40px;
   background: var(--border);
+  flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .hero-content {
-    padding: 48px 0 32px;
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
+  .hero-visual {
+    max-width: 360px;
+  }
+  .stat-item {
+    padding: 0 20px;
+  }
+}
 
+@media (max-width: 640px) {
   .hero-stats {
+    flex-wrap: wrap;
     gap: 24px;
+  }
+  .stat-sep { display: none; }
+  .stat-item {
+    flex: none;
+    padding: 0;
+    width: calc(50% - 12px);
   }
 }
 </style>

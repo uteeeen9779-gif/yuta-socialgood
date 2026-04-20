@@ -19,77 +19,106 @@ const beliefs = [
 ---
 <section class="philosophy" id="philosophy">
   <div class="container">
-    <div class="section-header">
-      <span class="section-label">Philosophy</span>
-      <h2 class="section-title">大切にしていること</h2>
-      <p class="section-subtitle">
+
+    <div class="phil-header">
+      <p class="eyebrow">Philosophy</p>
+      <h2 class="display-title">大切にしていること</h2>
+      <p class="section-lead">
         地域の魅力を、全国へ、世界へ、100年先へ。<br />
         この信念が、すべての仕事の出発点です。
       </p>
     </div>
-    <div class="beliefs-grid">
-      {beliefs.map((b) => (
-        <div class="belief-card">
-          <span class="belief-num">{b.num}</span>
-          <h3 class="belief-title">{b.title}</h3>
-          <p class="belief-body">{b.body}</p>
+
+    <div class="beliefs">
+      {beliefs.map((b, i) => (
+        <div class="belief-row">
+          <div class="belief-num-col">
+            <span class="belief-num">{b.num}</span>
+          </div>
+          <div class="belief-body-col">
+            <h3 class="belief-title">{b.title}</h3>
+            <p class="belief-text">{b.body}</p>
+          </div>
+          {i < beliefs.length - 1 && <div class="belief-rule" />}
         </div>
       ))}
     </div>
+
   </div>
 </section>
 
 <style>
 .philosophy {
-  background: var(--bg-alt);
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.beliefs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.phil-header {
+  max-width: 600px;
+  margin-bottom: 64px;
 }
 
-.belief-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 40px 32px;
+.beliefs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   border: 1px solid var(--border);
-  transition: var(--transition);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
-.belief-card:hover {
-  box-shadow: var(--shadow);
-  transform: translateY(-4px);
+.belief-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  padding: 48px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.belief-row:last-child {
+  border-bottom: none;
+}
+
+.belief-row:hover {
+  background: var(--bg-soft);
+}
+
+.belief-num-col {
+  padding-top: 4px;
 }
 
 .belief-num {
-  display: block;
-  font-family: var(--font-serif);
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--accent);
-  letter-spacing: 0.12em;
-  margin-bottom: 18px;
+  letter-spacing: 0.1em;
 }
 
 .belief-title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.375rem;
   font-weight: 600;
-  margin-bottom: 16px;
   color: var(--text);
+  margin-bottom: 14px;
 }
 
-.belief-body {
-  font-size: 0.875rem;
+.belief-text {
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.95;
+  max-width: 640px;
 }
 
-@media (max-width: 1024px) {
-  .beliefs-grid {
+@media (max-width: 768px) {
+  .belief-row {
     grid-template-columns: 1fr;
-    max-width: 560px;
+    gap: 16px;
+    padding: 32px 24px;
   }
 }
 </style>

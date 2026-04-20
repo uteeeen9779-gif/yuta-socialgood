@@ -4,67 +4,68 @@ const career = [
   { year: '2022', text: 'WEBデザイナーとして独立' },
   { year: '2023', text: '都内マーケティング事務所でチームアップ、WEBディレクターとして活動開始' },
   { year: '2025', text: '東証プライム上場 インフラ会社 資本戦略部へ' },
-  { year: '現在', text: '複業として地域の中小企業デジタル支援を継続中' },
+  { year: 'Now',  text: '複業として地域の中小企業デジタル支援を継続中' },
 ];
 
 const skills = [
-  { category: '経営・財務', items: ['財務分析', '経営評価', '海外ビジネス', 'M&A実務'] },
-  { category: 'WEB', items: ['Wix', 'WordPress', 'STUDIO'] },
-  { category: 'EC', items: ['Shopify', 'Stores', 'BASE'] },
-  { category: '予約・OTA', items: ['Airbnb', 'Booking.com', '楽天トラベル', '一休'] },
-  { category: '決済・LINE', items: ['Stripe', 'KOMOJU', 'LINE公式'] },
-  { category: 'AI・業務改善', items: ['業務フロー設計', '自動化支援'] },
+  { cat: '経営・財務',  items: ['財務分析', '経営評価', '海外ビジネス', 'M&A実務'] },
+  { cat: 'WEB制作',    items: ['Wix', 'WordPress', 'STUDIO'] },
+  { cat: 'EC構築',     items: ['Shopify', 'Stores', 'BASE'] },
+  { cat: '予約・OTA',  items: ['Airbnb', 'Booking.com', '楽天トラベル', '一休'] },
+  { cat: '決済・LINE', items: ['Stripe', 'KOMOJU', 'LINE公式'] },
+  { cat: 'AI・改善',   items: ['業務フロー設計', '自動化支援'] },
 ];
 ---
 <section class="about" id="about">
   <div class="container">
+
     <div class="about-grid">
+
       <div class="about-left">
-        <span class="section-label">About</span>
-        <h2 class="section-title">プロフィール</h2>
-        <div class="about-avatar">
-          <div class="avatar-circle">
-            <span>YU</span>
-          </div>
+        <div class="about-photo-wrap">
+          <img src="/profile.jpg" alt="YU_TABI プロフィール写真" class="about-photo" />
+          <div class="about-photo-accent"></div>
         </div>
-        <p class="about-name">YU_TABI</p>
-        <p class="about-role">WEBディレクター / 複業</p>
-        <p class="about-text">
-          東証プライム上場企業の資本戦略部に勤務しながら、中小企業のデジタル支援を複業で行っています。
-          本業で培った経営・財務・海外ビジネスの視点をデジタル支援に活かし、
-          地域の事業者が全国・世界に届く土台をつくることを目指しています。
-        </p>
       </div>
 
       <div class="about-right">
+        <p class="eyebrow">About</p>
+        <h2 class="display-title">プロフィール</h2>
+        <p class="about-text">
+          東証プライム上場企業の資本戦略部に勤務しながら、
+          中小企業のデジタル支援を複業で行っています。
+          本業で培った経営・財務・海外ビジネスの視点をデジタル支援に活かし、
+          地域の事業者が全国・世界に届く土台をつくることを目指しています。
+        </p>
+
         <div class="career-block">
-          <h3 class="block-heading">キャリア</h3>
+          <h3 class="block-title">Career</h3>
           <div class="career-list">
             {career.map((c) => (
-              <div class="career-item">
+              <div class="career-row">
                 <span class="career-year">{c.year}</span>
-                <span class="career-text" set:html={c.text} />
+                <span class="career-bar"></span>
+                <span class="career-text">{c.text}</span>
               </div>
             ))}
           </div>
         </div>
 
         <div class="skills-block">
-          <h3 class="block-heading">スキル・対応ツール</h3>
-          <div class="skills-grid">
+          <h3 class="block-title">Skills &amp; Tools</h3>
+          <div class="skills-rows">
             {skills.map((s) => (
-              <div class="skill-group">
-                <p class="skill-category">{s.category}</p>
-                <div class="skill-items">
-                  {s.items.map((item) => (
-                    <span class="skill-tag">{item}</span>
-                  ))}
+              <div class="skill-row">
+                <span class="skill-cat">{s.cat}</span>
+                <div class="skill-chips">
+                  {s.items.map((item) => <span class="chip">{item}</span>)}
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -72,83 +73,92 @@ const skills = [
 <style>
 .about-grid {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 420px 1fr;
   gap: 80px;
   align-items: start;
 }
 
-.about-avatar {
-  margin-bottom: 16px;
+/* ── Photo ── */
+.about-left {
+  position: sticky;
+  top: 100px;
 }
 
-.avatar-circle {
-  width: 120px;
-  height: 120px;
+.about-photo-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 3/4;
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about-photo-accent {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 80px;
+  height: 80px;
+  background: var(--accent);
   border-radius: 50%;
-  background: var(--accent-light);
-  border: 3px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--accent);
+  opacity: 0.12;
+  pointer-events: none;
 }
 
-.about-name {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.about-role {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
+/* ── Content ── */
 .about-text {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--text-muted);
-  line-height: 1.95;
-}
-
-.block-heading {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text);
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 20px;
-}
-
-.career-block {
+  line-height: 1.9;
   margin-bottom: 48px;
 }
 
-.career-list {
-  display: flex;
-  flex-direction: column;
+.block-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
 }
 
-.career-item {
+.career-block {
+  margin-bottom: 44px;
+}
+
+.career-list { display: flex; flex-direction: column; }
+
+.career-row {
   display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 16px;
-  padding: 14px 0;
+  grid-template-columns: 56px 1px 1fr;
+  gap: 0 20px;
+  padding: 16px 0;
   border-bottom: 1px solid var(--border);
   align-items: baseline;
 }
 
 .career-year {
-  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent);
-  font-family: var(--font-serif);
+  white-space: nowrap;
+}
+
+.career-bar {
+  align-self: stretch;
+  background: var(--border);
+  width: 1px;
+  min-height: 100%;
 }
 
 .career-text {
@@ -157,45 +167,37 @@ const skills = [
   line-height: 1.7;
 }
 
-.skills-grid {
+/* ── Skills ── */
+.skills-rows { display: flex; flex-direction: column; gap: 14px; }
+
+.skill-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  align-items: start;
 }
 
-.skill-category {
+.skill-cat {
   font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+  padding-top: 3px;
 }
 
-.skill-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.skill-tag {
-  font-size: 0.75rem;
-  background: var(--bg-alt);
-  color: var(--text);
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-}
+.skill-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 
 @media (max-width: 1024px) {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
+  .about-left { position: static; }
+  .about-photo-wrap { max-width: 360px; }
 }
 
 @media (max-width: 640px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
+  .skill-row { grid-template-columns: 1fr; gap: 8px; }
+  .career-row { grid-template-columns: 52px 1fr; gap: 0 12px; }
+  .career-bar { display: none; }
 }
 </style>

@@ -5,125 +5,156 @@ const works = [
     region: '中国地方',
     desc: 'WEBサイト・EC運用、マーケティング支援',
     tags: ['WEB運用', 'EC', 'マーケティング'],
+    gradient: 'linear-gradient(135deg, #E8D5B0 0%, #C4956A 100%)',
   },
   {
     category: '一棟貸し古民家',
     region: '中国地方',
     desc: 'WEBサイト構築、予約システム、多言語対応',
     tags: ['WEB構築', '予約システム', '多言語'],
+    gradient: 'linear-gradient(135deg, #B8D4C8 0%, #5A8A78 100%)',
   },
   {
     category: '建築家',
     region: '千葉',
     desc: '多言語WEBサイト構築、海外向け集客支援',
     tags: ['多言語', '海外集客', 'WEB構築'],
+    gradient: 'linear-gradient(135deg, #C8CDD8 0%, #6B7592 100%)',
   },
   {
     category: '古民家',
     region: '千葉',
     desc: 'WEBサイト構築',
     tags: ['WEB構築'],
+    gradient: 'linear-gradient(135deg, #D4C4A8 0%, #8B6E4A 100%)',
   },
   {
     category: 'クラフトビール醸造所',
     region: '千葉',
     desc: 'WEBサイト構築・運用、クリエイティブ制作、マーケティング支援',
     tags: ['WEB', 'クリエイティブ', 'マーケティング'],
+    gradient: 'linear-gradient(135deg, #D4B8A0 0%, #8B5A3A 100%)',
   },
   {
     category: '日本工芸画廊',
     region: '東京',
     desc: 'WEB／EC一体型サイト構築・運用、マーケティング支援',
     tags: ['WEB/EC統合', 'EC', 'マーケティング'],
+    gradient: 'linear-gradient(135deg, #1A1A1A 0%, #4A4A4A 100%)',
   },
 ];
 ---
 <section class="works" id="works">
   <div class="container">
-    <div class="section-header">
-      <span class="section-label">Works</span>
-      <h2 class="section-title">実績</h2>
-      <p class="section-subtitle">
+
+    <div class="works-header">
+      <p class="eyebrow">Works</p>
+      <h2 class="display-title">実績</h2>
+      <p class="section-lead">
         食品・宿泊・建築・工芸・飲食など、多業種の中小企業を支援してきました。
       </p>
     </div>
+
     <div class="works-grid">
       {works.map((w) => (
         <div class="work-card">
-          <div class="work-header">
-            <h3 class="work-category">{w.category}</h3>
-            <span class="work-region">{w.region}</span>
+          <div class="work-img" style={`background: ${w.gradient}`}>
+            <span class="work-region-badge">{w.region}</span>
           </div>
-          <p class="work-desc">{w.desc}</p>
-          <div class="work-tags">
-            {w.tags.map((t) => (
-              <span class="work-tag">{t}</span>
-            ))}
+          <div class="work-body">
+            <h3 class="work-title">{w.category}</h3>
+            <p class="work-desc">{w.desc}</p>
+            <div class="work-tags">
+              {w.tags.map((t) => <span class="chip chip-accent">{t}</span>)}
+            </div>
           </div>
         </div>
       ))}
     </div>
+
   </div>
 </section>
 
 <style>
 .works {
-  background: var(--bg-alt);
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+}
+
+.works-header {
+  max-width: 600px;
+  margin-bottom: 56px;
 }
 
 .works-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
 }
 
 .work-card {
-  background: var(--white);
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   transition: var(--transition);
 }
 
 .work-card:hover {
-  box-shadow: var(--shadow);
-  border-color: var(--accent-light);
-  transform: translateY(-2px);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
 }
 
-.work-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
+.work-img {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
-.work-category {
+.work-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-img img {
+  transform: scale(1.05);
+}
+
+.work-region-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.work-body {
+  padding: 24px;
+}
+
+.work-title {
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: var(--text);
-}
-
-.work-region {
-  display: inline-block;
-  font-size: 0.7rem;
-  color: var(--text-light);
-  background: var(--bg-alt);
-  padding: 3px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  margin-bottom: 8px;
 }
 
 .work-desc {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
   line-height: 1.75;
-  flex: 1;
+  margin-bottom: 16px;
 }
 
 .work-tags {
@@ -132,24 +163,11 @@ const works = [
   gap: 6px;
 }
 
-.work-tag {
-  font-size: 0.7rem;
-  color: var(--accent);
-  background: var(--accent-light);
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-weight: 500;
-}
-
 @media (max-width: 1024px) {
-  .works-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
-  .works-grid {
-    grid-template-columns: 1fr;
-  }
+  .works-grid { grid-template-columns: 1fr; }
 }
 </style>
