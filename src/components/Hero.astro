@@ -1,0 +1,198 @@
+---
+---
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-label">WEB DIRECTOR</p>
+      <h1 class="hero-title">
+        地域とつなぐ、<br />世界とつなぐ。
+      </h1>
+      <p class="hero-sub">売上にコミットするWEBディレクター</p>
+      <p class="hero-desc">
+        上場企業の現役社員として国際的なM&amp;A案件に携わりながら、<br class="pc-br" />
+        地域の中小企業のデジタル支援を複業で行っています。
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">まずは相談する</a>
+        <a href="#works" class="btn-secondary">実績を見る</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">6<span class="stat-plus">+</span></span>
+        <span class="stat-label">支援実績</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">コアサービス</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">10<span class="stat-plus">+</span></span>
+        <span class="stat-label">対応ツール</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 64px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  right: -8%;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 720px;
+  padding: 80px 0 40px;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin-bottom: 40px;
+}
+
+.pc-br {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .pc-br {
+    display: block;
+  }
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 32px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(45, 106, 79, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--text);
+  padding: 14px 32px;
+  border-radius: 32px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 32px 0 56px;
+  border-top: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.stat-plus {
+  font-size: 1.25rem;
+  color: var(--accent);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 48px 0 32px;
+  }
+
+  .hero-stats {
+    gap: 24px;
+  }
+}
+</style>

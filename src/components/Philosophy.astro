@@ -1,0 +1,95 @@
+---
+const beliefs = [
+  {
+    num: '01',
+    title: '手段より目的',
+    body: 'WEBもECも、あくまで売上をつくるための手段。「サイトを作ること」ではなく「事業が動くこと」にコミットします。デジタルはゴールではなく、事業成長のための最適な道具です。',
+  },
+  {
+    num: '02',
+    title: '両輪で地域を動かす',
+    body: '個人の支援だけでは、どうしても部分最適に終わる。地域が本当に強くなるには、大企業・自治体を動かす組織の力と、個別の事業者に寄り添う個人の現場力——この両輪が必要です。だから複業という形を選んでいます。',
+  },
+  {
+    num: '03',
+    title: '100年後に残す',
+    body: '地域の文化と魅力は、正しく発信されなければ消えていく。小さくても、地方にあっても、本物の魅力を持つ事業者が全国・世界に届く土台をつくること。それが、私がこの仕事を続ける理由です。',
+  },
+];
+---
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Philosophy</span>
+      <h2 class="section-title">大切にしていること</h2>
+      <p class="section-subtitle">
+        地域の魅力を、全国へ、世界へ、100年先へ。<br />
+        この信念が、すべての仕事の出発点です。
+      </p>
+    </div>
+    <div class="beliefs-grid">
+      {beliefs.map((b) => (
+        <div class="belief-card">
+          <span class="belief-num">{b.num}</span>
+          <h3 class="belief-title">{b.title}</h3>
+          <p class="belief-body">{b.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.philosophy {
+  background: var(--bg-alt);
+}
+
+.beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.belief-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.belief-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
+}
+
+.belief-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+}
+
+.belief-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.belief-body {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.95;
+}
+
+@media (max-width: 1024px) {
+  .beliefs-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+}
+</style>

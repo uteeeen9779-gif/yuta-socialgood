@@ -1,0 +1,153 @@
+---
+---
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">まずは話しましょう</h2>
+        <p class="contact-desc">
+          「どこから始めればいいかわからない」でも大丈夫です。<br />
+          ヒアリング・初回見積もりは無料。<br />
+          お気軽にご連絡ください。
+        </p>
+        <p class="contact-note">通常2営業日以内にご返信します。</p>
+      </div>
+
+      <div class="contact-right">
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="name">お名前 <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="山田 太郎" />
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="example@mail.com" />
+          </div>
+          <div class="form-group">
+            <label for="company">会社名・屋号</label>
+            <input type="text" id="company" name="company" placeholder="（任意）" />
+          </div>
+          <div class="form-group">
+            <label for="message">お問い合わせ内容 <span class="req">*</span></label>
+            <textarea id="message" name="message" required rows="5" placeholder="ご相談内容をお気軽にお書きください。"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">送信する</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact {
+  background: var(--bg-alt);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.contact-note {
+  font-size: 0.8125rem;
+  color: var(--text-light);
+}
+
+.contact-form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.req {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--text);
+  background: var(--bg);
+  transition: var(--transition);
+  outline: none;
+  resize: vertical;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-light);
+}
+
+.btn-submit {
+  background: var(--accent);
+  color: var(--white);
+  padding: 14px 32px;
+  border: none;
+  border-radius: 32px;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  align-self: flex-start;
+  box-shadow: 0 4px 16px rgba(45, 106, 79, 0.3);
+}
+
+.btn-submit:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-form {
+    padding: 28px;
+  }
+}
+</style>

@@ -1,0 +1,184 @@
+---
+const services = [
+  {
+    icon: '🌐',
+    title: 'WEBサイト構築・運用',
+    desc: 'Wix / WordPress / STUDIO 対応。多言語対応・インバウンド向けサイトの構築から運用まで、目的に合わせた最適なサイトを構築します。',
+    tags: ['Wix', 'WordPress', 'STUDIO', '多言語対応'],
+  },
+  {
+    icon: '🛒',
+    title: 'ECサイト構築・運用',
+    desc: 'Shopify / Stores / BASE 対応。決済システム・在庫管理・マーケティング連携まで、売れる仕組みを一貫して構築・運用します。',
+    tags: ['Shopify', 'Stores', 'BASE', 'Stripe'],
+  },
+  {
+    icon: '🤖',
+    title: 'AI導入・業務改善支援',
+    desc: '業務フローの可視化と改善設計、AIを活用した業務効率化支援。現場スタッフが自走できるまで定着を伴走します。（対応拡大中）',
+    tags: ['業務自動化', 'フロー設計', '定着支援'],
+  },
+];
+
+const steps = ['ヒアリング', '現状診断', '戦略立案', '実装', '運用', '自走支援'];
+---
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Services</span>
+      <h2 class="section-title">できること</h2>
+      <p class="section-subtitle">
+        構築して終わりではなく、事業が動くまで。<br />
+        戦略立案から実装・定着まで一貫して支援します。
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((s) => (
+        <div class="service-card">
+          <div class="service-icon">{s.icon}</div>
+          <h3 class="service-title">{s.title}</h3>
+          <p class="service-desc">{s.desc}</p>
+          <div class="service-tags">
+            {s.tags.map((t) => (
+              <span class="tag">{t}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="process-box">
+      <p class="process-label">支援プロセス</p>
+      <div class="process-steps">
+        {steps.map((step, i) => (
+          <div class="step-item">
+            <span class="step-text">{step}</span>
+            {i < steps.length - 1 && <span class="step-arrow">›</span>}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="services-note">
+      ※ その他：宿泊施設向け予約システム・OTA連携、公式LINE構築、SNS運用、グロースハックなども対応しています。
+    </p>
+  </div>
+</section>
+
+<style>
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.service-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--accent-light);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.service-title {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.service-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.process-box {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 32px 40px;
+  margin-bottom: 20px;
+}
+
+.process-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.process-steps {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.step-arrow {
+  color: var(--accent);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.services-note {
+  font-size: 0.8125rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+
+  .process-box {
+    padding: 24px;
+  }
+}
+</style>
