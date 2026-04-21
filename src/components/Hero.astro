@@ -1,115 +1,67 @@
 ---
 ---
 <section class="hero" id="home">
+  <div class="hero-inner">
 
-  <div class="hero-kv-wrap" aria-hidden="true">
-    <img src="/kv-pattern2.jpg" alt="" class="hero-kv" />
-    <div class="hero-kv-overlay"></div>
-  </div>
-
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="eyebrow">Web Director</p>
-        <h1 class="hero-title">
-          地域とつなぐ、<br />世界とつなぐ。
-        </h1>
-        <p class="hero-sub">地域事業者さまのデジタル参謀（CMO）</p>
-        <p class="hero-desc">
-          上場企業にて経営戦略業務に従事しながら、個人事業主として
-          地域の中小企業さまの商材を全国・世界に発信していく
-          デジタル支援を複業で行っています。
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">まずは相談する →</a>
-          <a href="#works" class="btn-outline">実績を見る</a>
-        </div>
+    <div class="hero-text">
+      <h1 class="hero-title">
+        地域とつなぐ、<br />世界とつなぐ。
+      </h1>
+      <p class="hero-sub">地域事業者さまのデジタル参謀（CMO）</p>
+      <p class="hero-desc">
+        上場企業にて経営戦略業務に従事しながら、個人事業主として
+        地域の中小企業さまの商材を全国・世界に発信していく
+        デジタル支援を複業で行っています。
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">まずは相談する →</a>
+        <a href="#works" class="btn-outline">実績を見る</a>
       </div>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-num">6<small>+</small></span>
-        <span class="stat-text">支援実績</span>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="stat-item">
-        <span class="stat-num">3</span>
-        <span class="stat-text">コアサービス</span>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="stat-item">
-        <span class="stat-num">10<small>+</small></span>
-        <span class="stat-text">対応ツール</span>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="stat-item">
-        <span class="stat-num">4<small>年</small></span>
-        <span class="stat-text">支援経験</span>
-      </div>
+    <div class="hero-visual">
+      <img src="/kv-pattern2.jpg" alt="" class="hero-kv" />
     </div>
+
   </div>
 </section>
 
 <style>
 .hero {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   padding-top: 68px;
-  position: relative;
-  overflow: hidden;
   background: var(--bg);
-}
-
-/* ── KV background ── */
-.hero-kv-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-kv {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-kv-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(255,255,255,0.97) 0%,
-    rgba(255,255,255,0.72) 38%,
-    rgba(255,255,255,0.05) 100%
-  );
-}
-
-/* ── Content ── */
-.container {
-  position: relative;
-  z-index: 1;
+  overflow: hidden;
 }
 
 .hero-inner {
-  padding: 100px 0 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 68px);
+}
+
+/* ── Left: text ── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 32px;
   max-width: 640px;
+  margin-left: auto;
 }
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.25rem, 7vw, 5.5rem);
+  font-size: clamp(2.75rem, 4.5vw, 4.25rem);
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text);
   margin-bottom: 24px;
 }
 
 .hero-sub {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--accent);
   margin-bottom: 16px;
@@ -121,7 +73,6 @@
   color: var(--text-muted);
   line-height: 1.9;
   margin-bottom: 44px;
-  max-width: 520px;
 }
 
 .hero-actions {
@@ -130,73 +81,41 @@
   flex-wrap: wrap;
 }
 
-/* ── Stats ── */
-.hero-stats {
-  display: flex;
-  align-items: center;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px 40px;
-  margin-bottom: 24px;
-  width: fit-content;
-  gap: 0;
+/* ── Right: image ── */
+.hero-visual {
+  position: relative;
+  overflow: hidden;
 }
 
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 0 36px;
+.hero-kv {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
-.stat-item:first-child { padding-left: 0; }
-.stat-item:last-child  { padding-right: 0; }
-
-.stat-num {
-  font-family: var(--font-serif);
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--text);
-}
-
-.stat-num small {
-  font-size: 1.1rem;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.stat-text {
-  font-size: 0.725rem;
-  color: var(--text-light);
-  letter-spacing: 0.06em;
-}
-
-.stat-sep {
-  width: 1px;
-  height: 36px;
-  background: var(--border);
-  flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-  .hero-kv-overlay {
-    background: rgba(255,255,255,0.88);
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
   }
-  .hero-inner { padding: 64px 0 48px; }
-  .hero-stats {
-    width: 100%;
-    padding: 20px 24px;
-    flex-wrap: wrap;
-    gap: 20px;
+  .hero-text {
+    padding: 72px 0 48px;
+    max-width: 100%;
+    margin-left: 0;
+    /* inside .container padding */
+    padding-left: 32px;
+    padding-right: 32px;
   }
-  .stat-sep { display: none; }
-  .stat-item {
-    padding: 0;
-    flex: 1;
-    min-width: 80px;
+  .hero-visual {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-text {
+    padding: 56px 20px 40px;
   }
 }
 </style>
