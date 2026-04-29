@@ -71,9 +71,9 @@ const steps = [
             </div>
             {i < steps.length - 1 && (
               <div class="step-connector">
-                <svg width="24" height="2" viewBox="0 0 24 2" fill="none">
-                  <path d="M0 1 H20" stroke="#D0D0CA" stroke-width="1" stroke-dasharray="3 2"/>
-                  <path d="M20 0 L24 1 L20 2 Z" fill="#D0D0CA"/>
+                <svg width="36" height="16" viewBox="0 0 36 16" fill="none">
+                  <line x1="0" y1="8" x2="26" y2="8" stroke="#1B5C3E" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+                  <path d="M26 4 L34 8 L26 12 Z" fill="#1B5C3E" opacity="0.5"/>
                 </svg>
               </div>
             )}
@@ -194,12 +194,13 @@ const steps = [
 }
 
 .process-label {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .process-track {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0;
 }
@@ -213,26 +214,29 @@ const steps = [
 .step-inner {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 0 4px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
 }
 
 .step-label {
   font-family: var(--font-mono);
   font-size: 0.625rem;
-  color: var(--text-light);
-  letter-spacing: 0.08em;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  opacity: 0.7;
 }
 
 .step-text {
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.9375rem;
+  font-weight: 700;
   color: var(--text);
 }
 
 .step-connector {
-  margin: 0 12px;
+  margin: 0 4px;
   flex-shrink: 0;
+  margin-bottom: 2px;
 }
 
 .svc-note {

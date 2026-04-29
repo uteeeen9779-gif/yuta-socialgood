@@ -1,10 +1,11 @@
 ---
-const career = [
-  { year: '2021', text: '東証プライム上場 金融会社 M&A戦略部 入社' },
-  { year: '2022', text: 'WEBデザイナーとして独立' },
-  { year: '2023', text: '都内マーケティング事務所でチームアップ、WEBディレクターとして活動開始' },
-  { year: '2025', text: '東証プライム上場 インフラ会社 資本戦略部へ' },
-  { year: 'Now',  text: '複業として地域の中小企業デジタル支援を継続中' },
+// Shared timeline: year | employee | freelance
+const timeline = [
+  { year: '2021', employee: '東証プライム上場 金融会社 M&A戦略部 入社', freelance: null },
+  { year: '2022', employee: null, freelance: '個人事業主として開業' },
+  { year: '2023', employee: null, freelance: '都内マーケティング事務所でチームアップ、WEBディレクターとして活動開始' },
+  { year: '2025', employee: '東証プライム上場 インフラ会社 資本戦略部へ', freelance: null },
+  { year: 'Now',  employee: null, freelance: '地域の中小企業様のデジタル支援を継続中' },
 ];
 
 const skills = [
@@ -40,12 +41,29 @@ const skills = [
 
         <div class="career-block">
           <h3 class="block-title">Career</h3>
-          <div class="career-list">
-            {career.map((c) => (
-              <div class="career-row">
-                <span class="career-year">{c.year}</span>
-                <span class="career-bar"></span>
-                <span class="career-text">{c.text}</span>
+
+          <div class="career-timeline">
+            <!-- Header -->
+            <div class="tl-header">
+              <div class="tl-year-col"></div>
+              <div class="tl-col-head">
+                <span class="col-icon">🏢</span> 会社員
+              </div>
+              <div class="tl-col-head">
+                <span class="col-icon">💼</span> 個人事業主
+              </div>
+            </div>
+
+            <!-- Rows -->
+            {timeline.map((row) => (
+              <div class="tl-row">
+                <div class="tl-year">{row.year}</div>
+                <div class={`tl-cell ${row.employee ? 'tl-cell--active' : 'tl-cell--empty'}`}>
+                  {row.employee && <span class="tl-cell-text">{row.employee}</span>}
+                </div>
+                <div class={`tl-cell ${row.freelance ? 'tl-cell--active' : 'tl-cell--empty'}`}>
+                  {row.freelance && <span class="tl-cell-text">{row.freelance}</span>}
+                </div>
               </div>
             ))}
           </div>
@@ -135,34 +153,82 @@ const skills = [
   margin-bottom: 44px;
 }
 
-.career-list { display: flex; flex-direction: column; }
-
-.career-row {
-  display: grid;
-  grid-template-columns: 56px 1px 1fr;
-  gap: 0 20px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  align-items: baseline;
+/* ── Timeline grid ── */
+.career-timeline {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
-.career-year {
+/* 3カラム: 年 | 会社員 | 個人事業主 */
+.tl-header,
+.tl-row {
+  display: grid;
+  grid-template-columns: 52px 1fr 1fr;
+}
+
+.tl-header {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+.tl-col-head {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 1px solid var(--border);
+}
+
+.tl-col-head:first-of-type {
+  border-left: none;
+}
+
+.col-icon {
+  font-size: 0.875rem;
+}
+
+.tl-row {
+  border-bottom: 1px solid var(--border);
+  align-items: stretch;
+}
+
+.tl-row:last-child {
+  border-bottom: none;
+}
+
+.tl-year {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.6875rem;
+  font-weight: 700;
   color: var(--accent);
+  padding: 16px 10px 16px 14px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 18px;
   white-space: nowrap;
 }
 
-.career-bar {
-  align-self: stretch;
-  background: var(--border);
-  width: 1px;
-  min-height: 100%;
+.tl-cell {
+  border-left: 1px solid var(--border);
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
 }
 
-.career-text {
-  font-size: 0.875rem;
+.tl-cell--active {
+  background: var(--bg);
+}
+
+.tl-cell--empty {
+  background: var(--bg-soft);
+}
+
+.tl-cell-text {
+  font-size: 0.8125rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
@@ -196,8 +262,9 @@ const skills = [
 }
 
 @media (max-width: 640px) {
+  .tl-header,
+  .tl-row { grid-template-columns: 44px 1fr 1fr; }
+  .tl-cell { padding: 12px 10px; }
   .skill-row { grid-template-columns: 1fr; gap: 8px; }
-  .career-row { grid-template-columns: 52px 1fr; gap: 0 12px; }
-  .career-bar { display: none; }
 }
 </style>
